@@ -13,21 +13,22 @@ function App() {
   return (
     
       <BrowserRouter>
-          <div>
+          <div className='header'>
             <Header pName={'Josh'}  />
           </div>
-          <div >
-            <div >
+          
+            <div className='sideNav'>
               <SideNav/>
             </div>
-            <div >
+
+            <div className='pageView'>
               <Switch>          
                 <Route path="/" component={Home} exact></Route>
                 <Route path="/sub" component={Sub}></Route>
               </Switch>
             </div>
            
-          </div>
+          
 
           
           
