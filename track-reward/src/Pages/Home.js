@@ -10,19 +10,34 @@ const Home = () => {
     const initiatives=[
         {id:1,
             title:'task1',
-            isStatus:'upcoming',
+            isCurrent:true,
             stDate:'12/12/21',
             endDate:'01/01/22'},      
             {id:2,
                 title:'task2',
-                isStatus:'current',
+                isCurrent:false,
                 stDate:'12/12/21',
                 endDate:'01/01/22'},      
                 {id:3,
                     title:'task3',
-                    isStatus:'upcoming',
+                    isCurrent:false,
                     stDate:'12/12/21',
-                    endDate:'01/01/22'}    
+                    endDate:'01/01/22'},      
+                    {id:4,
+                        title:'task1',
+                        isCurrent:false,
+                        stDate:'12/12/21',
+                        endDate:'01/01/22'} ,      
+                        {id:5,
+                            title:'task5',
+                            isCurrent:false,
+                            stDate:'12/12/21',
+                            endDate:'01/01/22'} ,      
+                            {id:6,
+                                title:'task1',
+                                isCurrent:false,
+                                stDate:'12/12/21',
+                                endDate:'01/01/22'}    
                              
     ]
     //title,isStatus,stDate,endDate

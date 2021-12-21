@@ -3,10 +3,10 @@ const Header = ({pName}) => {
         <nav>
             <div className="head-container">
                 <div className="box">
-                    <h3>Track and Reward</h3>
+                    <h3 className="appHeadText">Track and Reward</h3>
                 </div>
-                <div className="box">
-                    <h2>{pName}</h2>
+                <div className="appHeadText">
+                    <h3>{pName}</h3>
                 </div>
             </div>
         </nav>

@@ -5,10 +5,10 @@ const Initiative = ({initiative}) => {
     return (
         <div className='init-container'>
             <div className="init">
-                <h3>{initiative.title}</h3>
-                <h3>{initiative.isStatus}</h3>
-                <h3>{initiative.stDate}</h3>
-                <h3>{initiative.endDate}</h3>
+                <h4>{initiative.title}</h4>
+                <h4>{initiative.isCurrent?'Current':'Upcoming'}</h4>
+                <h4>{initiative.stDate}</h4>
+                <h4>{initiative.endDate}</h4>
                 <Button/>
             </div>
             <p>Description: This is a description</p>
