@@ -41,7 +41,7 @@ word-spacing:0px;
 }
 
 .init{
-  height: 100px;
+  height: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -55,11 +55,19 @@ word-spacing:0px;
   position: fixed;
   top: 100px ;
   left:200px ;
-  width: 100%;
+  width: 83%;
   padding: 5px;
   margin: 4px;
   margin-right: 5px;
  background-color: #189AB4;
+}
+
+.innerSearch{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 5px;
 }
 
 .header{
@@ -117,6 +125,7 @@ a{
   vertical-align:baseline;
   letter-spacing:normal;
   word-spacing:0px;
+  
 }
 
 .appHeadText{
@@ -137,3 +146,45 @@ word-spacing:0px;
     border-radius: 10px;
 }
 
+.portal{
+  width: 200px;
+  height: 250px;
+  position: fixed;
+  top: 30%;
+  left: 45%;
+  background-color:#fce49e ;
+  z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color:rgba(0,0,0,0.7);
+  z-index: 1000;
+}
+.portalHead{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+}
+.portalName{
+  color:#1f2029;
+  font-size:24px;
+  font-family:"Segoe UI";
+}
+
+.innerPortal{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size:15px;
+  font-family:"Segoe UI";
+}

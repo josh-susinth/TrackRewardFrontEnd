@@ -15,7 +15,7 @@ const Search = ({onSearch}) => {
    
     }
     return (
-        <div className="search">
+        <div >
             <form onSubmit={onsubmit}>
                 <input type='text' placeholder='Enter keyword...' value={init} onChange={(e)=>setInit(e.target.value)}></input>
                 <input type='submit' value='Go'></input>
