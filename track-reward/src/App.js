@@ -14,7 +14,7 @@ function App() {
     
       <BrowserRouter>
           <div className='header'>
-            <Header pName={'Josh'}  />
+            <Header pName={'Josh Susinth J'}  />
           </div>
           
             <div className='sideNav'>

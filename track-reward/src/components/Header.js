@@ -6,7 +6,7 @@ const Header = ({pName}) => {
                     <h3 className="appHeadText">Track and Reward</h3>
                 </div>
                 <div className="appHeadText">
-                    <h3>{pName}</h3>
+                    <p>{pName}</p>
                 </div>
             </div>
         </nav>

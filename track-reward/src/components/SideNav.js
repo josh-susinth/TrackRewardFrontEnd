@@ -4,8 +4,8 @@ const SideNav = () => {
         <>
             <nav >
                 <ul>
-                    <li><a href="/">Initiatives</a></li>
-                    <li><a href="/sub">subscription</a></li>
+                    <li><p ><a href="/">Initiatives</a></p></li>
+                    <li><p><a href="/sub">Subscription</a></p></li>
                 </ul>  
             </nav>
         </>
