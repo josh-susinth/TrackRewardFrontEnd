@@ -28,13 +28,14 @@ const Modal = ({isOpen,onClose,onApplyFilter}) => {
                     <br></br>
                     <input type="radio" value={0} name="eventSts" onChange={(e)=>setFilterVal(e.target.value)}/> Clear Filter
                 </div>
-                <button className='btn' style={{width:'100px',marginTop:'10px'}} onClick={()=>{
-                    onApplyFilter(filterVal);
-                    setFilterVal(0);
-                }}>Apply Filter</button>
+                
             
 
             </div>
+            <button className='btn' style={{width:'100%',marginTop:'30px'}} onClick={()=>{
+                    onApplyFilter(filterVal);
+                    setFilterVal(0);
+                }}>Apply Filter</button>
             
         </div>
         </>

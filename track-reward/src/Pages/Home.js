@@ -11,7 +11,7 @@ import { useState } from "react";
 const Home = () => {
     const initiatives=[
         {id:1,
-            title:'task1',
+            title:'num onethis is the task num onethis is the task num one',
             isCurrent:true,
             stDate:'12/12/21',
             endDate:'01/01/22'},      
