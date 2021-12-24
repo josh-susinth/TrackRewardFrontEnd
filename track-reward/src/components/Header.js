@@ -1,4 +1,4 @@
-const Header = ({pName}) => {
+const Header = ({pName,logout}) => {
     return (
         <nav>
             <div className="head-container">
@@ -7,6 +7,9 @@ const Header = ({pName}) => {
                 </div>
                 <div className="appHeadText">
                     <p>{pName}</p>
+                </div>
+                <div>
+                    <button className="btn" style={{marginTop:"15px" }}onClick={logout}>log out</button>
                 </div>
             </div>
         </nav>

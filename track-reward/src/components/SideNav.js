@@ -1,11 +1,13 @@
-
+import { Link } from "react-router-dom"
 const SideNav = () => {
     return (
         <>
             <nav >
                 <ul>
-                    <li><p ><a href="/">Initiatives</a></p></li>
-                    <li><p><a href="/sub">Subscription</a></p></li>
+                    <Link className="a" to='/'>Initiatives</Link>
+                    <br></br>
+                    <Link className="a" to='/sub'>Subscription</Link>
+                    
                 </ul>  
             </nav>
         </>
