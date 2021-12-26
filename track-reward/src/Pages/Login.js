@@ -11,6 +11,8 @@ const Login = ({login}) => {
     }
 
     return (
+        <>
+        <h4 style={{marginTop:"10px",fontSize:"24px",position:"fixed",top:"10px",left:"41.5%",fontFamily:"Segoe UI" }}>Track And Reward</h4>
         <form onSubmit={submitHandler}>
             <div className='form'>
                 <h2 >Login</h2>
@@ -26,6 +28,7 @@ const Login = ({login}) => {
                 <input className="btn" style={{width:'100%',marginTop:'30px'}} type='submit' value="Login"/>
             </div>
         </form>
+        </>
     )
 }
 
