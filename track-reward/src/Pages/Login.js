@@ -15,7 +15,7 @@ const Login = ({login}) => {
         <h4 style={{marginTop:"10px",fontSize:"24px",position:"fixed",top:"10px",left:"41.5%",fontFamily:"Segoe UI" }}>Track And Reward</h4>
         <form onSubmit={submitHandler}>
             <div className='form'>
-                <h2 >Login</h2>
+                <h2 style={{textAlign:"center" }}>Login</h2>
                 {/*ERROR*/}
                 <div className='form-group'>
                     <label htmlFor='email'>Email  :   </label>
