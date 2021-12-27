@@ -15,7 +15,7 @@ const Modal = ({isOpen,onClose,onApplyFilter}) => {
         <div className="portal">
             <div className="portalHead">
                 <h1 className="portalName">Filter</h1>
-                <FiX onClick={onClose}/>
+                <FiX style={{cursor:"pointer"}} onClick={onClose}/>
             </div>
             
             <div className="innerPortal">

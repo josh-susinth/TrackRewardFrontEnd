@@ -1,11 +1,11 @@
 import Initiative from "./Initiative";
 
-const Initiatives = ({initiatives}) => {
+const Initiatives = ({initiatives,onClickDesc}) => {
     return (
         <div>
             
             {initiatives.map((initiative)=>(
-                <Initiative key={initiative.id} initiative={initiative}/>
+                <Initiative key={initiative.id} initiative={initiative} onClickDesc={onClickDesc}/>
             ))}
         </div>
     )

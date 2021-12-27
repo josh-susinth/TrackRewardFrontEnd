@@ -153,6 +153,7 @@ word-spacing:0px;
     width: 80px;
     height: 30px;
     border-radius: 10px;
+    cursor:pointer;
 }
 
 .portal{

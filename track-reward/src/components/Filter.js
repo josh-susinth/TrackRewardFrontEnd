@@ -1,7 +1,7 @@
 import { IoMdOptions } from "react-icons/io";
 const Filter = ({onFilter}) => {
     return (
-        <div onClick={onFilter}>
+        <div style={{cursor:"pointer"}} onClick={onFilter}>
             <IoMdOptions/>
         </div>
     )
