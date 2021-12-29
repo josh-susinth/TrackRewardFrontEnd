@@ -8,6 +8,7 @@ const Login = ({login}) => {
         e.preventDefault();
 
         login(details);
+        setDetails({userEmail:"",pwd:""})
     }
 
     return (
@@ -19,7 +20,7 @@ const Login = ({login}) => {
                 {/*ERROR*/}
                 <div className='form-group'>
                     <label htmlFor='email'>Email  :   </label>
-                    <input className='loginInput' type='email' name='email' id='email' onChange={e=>setDetails({...details,userEmail:e.target.value})} value={details.userEmail} placeholder='Email ID'/>
+                    <input className='loginInput' type='type' name='email' id='email' onChange={e=>setDetails({...details,userEmail:e.target.value})} value={details.userEmail} placeholder='Email ID'/>
                 </div>
                 <div className='form-group'>
                     <label htmlFor='password'>Password:</label>

@@ -6,75 +6,41 @@ import Modal from '../components/Modal';
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
 import Description from "../components/Description";
-import { useState } from "react";
+import axios from 'axios';
+import React,{ useState , useEffect} from "react";
 
 
 
 
-const Home = ({userEmail,logout}) => {
-    const initiatives=[
-        {id:1,
-            title:'num onethis is the task num onethis is the task num one',
-            isCurrent:true,
-            stDate:'12/12/21',
-            endDate:'01/01/22',
-            description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.'},      
-            {id:2,
-                title:'task2',
-                isCurrent:false,
-                stDate:'12/12/21',
-                endDate:'01/01/22',
-                description:'this is description for task 2'},      
-                {id:3,
-                    title:'task3',
-                    isCurrent:true,
-                    stDate:'12/12/21',
-                    endDate:'01/01/22',
-                    description:'this is description for task 3'},      
-                    {id:4,
-                        title:'task1',
-                        isCurrent:false,
-                        stDate:'12/12/21',
-                        endDate:'01/01/22',
-                        description:'this is description for task 4'} ,      
-                        {id:5,
-                            title:'task5',
-                            isCurrent:true,
-                            stDate:'12/12/21',
-                            endDate:'01/01/22',
-                            description:'this is description for task 5'} ,      
-                            {id:6,
-                                title:'task1',
-                                isCurrent:false,
-                                stDate:'12/12/21',
-                                endDate:'01/01/22',
-                                description:'this is description for task 6'}  ,      
-                                {id:7,
-                                    title:'task1',
-                                    isCurrent:false,
-                                    stDate:'12/12/21',
-                                    endDate:'01/01/22',
-                                    description:'this is description for task 7'}  ,      
-                                    {id:8,
-                                        title:'task1',
-                                        isCurrent:false,
-                                        stDate:'12/12/21',
-                                        endDate:'01/01/22',
-                                        description:'this is description for task 8'}  ,      
-                                        {id:9,
-                                            title:'task1',
-                                            isCurrent:false,
-                                            stDate:'12/12/21',
-                                            endDate:'01/01/22',
-                                            description:'this is description for task 9'}  ,      
-                                            {id:10,
-                                                title:'task1',
-                                                isCurrent:false,
-                                                stDate:'12/12/21',
-                                                endDate:'01/01/22',
-                                                description:'this is description for task 10'}    
-                             
-    ]
+const Home = ({userEmail,id,logout}) => {
+    const [initiatives,setInitiatives]=useState([]);
+    const url="https://jsonplaceholder.typicode.com/users";
+    console.log("url",url);
+
+    useEffect=(()=>{
+        console.log("entered useEffect -------------------");
+        const fetchInits=async()=>{
+            const response=await fetch(url);
+            
+            const data=await response.json();
+            console.log("inside")
+            console.log("response",response);
+            console.log("data",data);
+            
+           // setInitiatives(data);
+        };
+        fetchInits();
+        
+    },[]);
+    //     fetch(url)
+    // .then(res=>res.json()).then(data=>setInitiatives(data));
+    
+
+    console.log("events----------------------------",initiatives);
+    
+    
+    
+    
 
     
 
@@ -119,8 +85,9 @@ const Home = ({userEmail,logout}) => {
         
         onClose();
     }
+    console.log("before return --------------------------------------")
     return (
-        <>
+        <React.Fragment>
             <div className='header'>
                 <Header pName={userEmail} logout={logout}  />
             </div>
@@ -137,7 +104,7 @@ const Home = ({userEmail,logout}) => {
             <Modal isOpen={isOpen} onClose={onClose} onApplyFilter={onApplyFilter}/>
             <Description isOpenDesc={isOpenDesc}  onCloseDesc={onCloseDesc} description={desc}/>
             <Initiatives initiatives={inits} onClickDesc={onClickDesc}/>
-        </>
+        </React.Fragment>
         )
 }
 
