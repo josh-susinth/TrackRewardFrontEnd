@@ -10,45 +10,46 @@ import Sub from "./Pages/Sub";
 
 function App() {
   const [loginUser,setLoginUser]=useState("");
-  const [user,setUser]=useState("");
-  const [id,setId]=useState("");
+  const [user,setUser]=useState({id:"",userName:""});
+  //const [id,setId]=useState("");
 
-  console.log("up",user,id);
-const login=async(details)=>{
-    // console.log(details);
-    // if(users.filter((u)=>(u.userEmail== && u.pwd==)).length===1){
-    //   setUser(details.userEmail);
-    //   console.log(user);
-    //   console.log("RIGHT !!!!!!!!!!!!!");
+  console.log("up",user.userName,user.id);
+  const login=async(details)=>{
     
-    // }
-    // else{
-    //   console.log("WRONG !!!!!!!!!!!!!");
-    // }
-    //const url=;
     const name=details.userEmail;
     const pwd=details.pwd;
     const url="https://track-and-reward-back-end.vercel.app/login?uname="+name+"&pwd="+pwd;
+
     console.log("entered",name,pwd);
     console.log("url",url);
-    await fetch(url)
-    .then(res=>res.json()).then(data=>setLoginUser(data[0]));
 
-    console.log(loginUser);
-      setUser(loginUser.username);
-      setId(loginUser.empid);
+    await fetch(url)
+    .then(res=>res.json()).then(data=>{
+      if(data!==null)
+      setLoginUser(data[0])
+      else{
+        logout();
+      }
+    });
+
+    console.log("inside login",loginUser);
+    //setId(loginUser.empid);
+    setUser({id:loginUser.empid,userName:loginUser.empname});
+      
     
 }
 
-  console.log("down",user,id);
+  console.log("down",user.userName,user.id);
 
 //login
 
 
 const logout=()=>{
     console.log("logged out");
-    setUser('');
-    setId('');
+    //setId("");
+    setUser({id:"",userName:""});
+    console.log("____________________________");
+    
 }
   
   return (
@@ -58,11 +59,12 @@ const logout=()=>{
 
             <div className='pageView'>
                
-              {(user!=="")?(<Redirect to='/'/>):(<Redirect to='/login'/>)}
+              {(user.userName)?(<Redirect to='/'/>):(<Redirect to='/login'/>)}
 
-                <Route path="/" component={()=><Home userEmail={user} id={id} logout={logout}/>} exact></Route>
+                <Route path="/" component={()=><Home userEmail={user.userName
+                } id={user.id} logout={logout}/>} exact></Route>
                 
-                <Route path="/sub" component={()=><Sub userEmail={user} logout={logout}/>}></Route>
+                <Route path="/sub" component={()=><Sub userEmail={user.userName} id={user.id} logout={logout}/>}></Route>
                 <Route path="/login" component={()=><Login login={login}/>}></Route>
               
             </div>

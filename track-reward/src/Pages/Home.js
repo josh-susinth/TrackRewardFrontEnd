@@ -6,7 +6,7 @@ import Modal from '../components/Modal';
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
 import Description from "../components/Description";
-import axios from 'axios';
+
 import React,{ useState , useEffect} from "react";
 
 
@@ -14,12 +14,15 @@ import React,{ useState , useEffect} from "react";
 
 const Home = ({userEmail,id,logout}) => {
     const [initiatives,setInitiatives]=useState([]);
-    const url="https://jsonplaceholder.typicode.com/users";
-    console.log("url",url);
+    const [inits,setInits]=useState(initiatives);
+   
+    const [track,setTrack]=useState(0);
+    console.log("frst track------------",track);
 
-    useEffect=(()=>{
+    useEffect(()=>{
         console.log("entered useEffect -------------------");
         const fetchInits=async()=>{
+            const url="https://track-and-reward-back-end.vercel.app/list/"+id;
             const response=await fetch(url);
             
             const data=await response.json();
@@ -27,13 +30,14 @@ const Home = ({userEmail,id,logout}) => {
             console.log("response",response);
             console.log("data",data);
             
-           // setInitiatives(data);
+           setInitiatives(data);
+           setInits(data);
+           
         };
         fetchInits();
         
-    },[]);
-    //     fetch(url)
-    // .then(res=>res.json()).then(data=>setInitiatives(data));
+    },[track]);
+    
     
 
     console.log("events----------------------------",initiatives);
@@ -43,9 +47,11 @@ const Home = ({userEmail,id,logout}) => {
     
 
     
-
+    
     //title,isStatus,stDate,endDate
-    const [inits,setInits]=useState(initiatives);
+    
+    
+    console.log("inits",inits);
     //portal
     const [isOpen,setOpen]=useState(false);
     const [isOpenDesc,setOpenDesc]=useState(false);
@@ -53,7 +59,8 @@ const Home = ({userEmail,id,logout}) => {
 
     const onSearch=(searchTerm)=>{
         console.log(searchTerm);
-        setInits(initiatives.filter((init)=>(init.title).includes(searchTerm)));
+        setInits(initiatives.filter((init)=>(init.eventname.toLowerCase()).includes(searchTerm)));
+        console.log("search",inits);
         
     }
     const onFilter=()=>{
@@ -74,10 +81,10 @@ const Home = ({userEmail,id,logout}) => {
     const onApplyFilter=(filterVal)=>{
         console.log(filterVal);
         if(filterVal==1){
-            setInits(initiatives.filter((init)=>(init.isCurrent)));
+            setInits(initiatives.filter((init)=>(init.status)));
         }
         else if(filterVal==2){
-            setInits(initiatives.filter((init)=>(!init.isCurrent)));
+            setInits(initiatives.filter((init)=>(!init.status)));
         }
         else{
             setInits(initiatives);
@@ -85,6 +92,32 @@ const Home = ({userEmail,id,logout}) => {
         
         onClose();
     }
+
+    const onSub=async(empid,pid)=>{
+        console.log("inside sub");
+        console.log(empid,pid);
+        if(empid){
+            console.log("unsubscribe");
+            await fetch(`https://track-and-reward-back-end.vercel.app/unsubscribe/${id}/${pid}`,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            });
+        }
+        else{
+            console.log("subscribe");
+            await fetch(`https://track-and-reward-back-end.vercel.app/subscribe/${id}/${pid}`,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            });
+        }
+        setTrack(track+1);
+        console.log(track);
+    }
+
     console.log("before return --------------------------------------")
     return (
         <React.Fragment>
@@ -103,7 +136,7 @@ const Home = ({userEmail,id,logout}) => {
             </div>
             <Modal isOpen={isOpen} onClose={onClose} onApplyFilter={onApplyFilter}/>
             <Description isOpenDesc={isOpenDesc}  onCloseDesc={onCloseDesc} description={desc}/>
-            <Initiatives initiatives={inits} onClickDesc={onClickDesc}/>
+            <Initiatives initiatives={inits} onClickDesc={onClickDesc} onSub={onSub}/>
         </React.Fragment>
         )
 }
