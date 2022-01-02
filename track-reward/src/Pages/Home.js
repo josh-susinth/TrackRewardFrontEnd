@@ -19,8 +19,9 @@ const Home = ({userEmail,id,logout}) => {
     const [track,setTrack]=useState(0);
     console.log("frst track------------",track);
 
-    useEffect(()=>{
+    let updateMe = () => {
         console.log("entered useEffect -------------------");
+    
         const fetchInits=async()=>{
             const url="https://track-and-reward-back-end.vercel.app/list/"+id;
             const response=await fetch(url);
@@ -35,8 +36,15 @@ const Home = ({userEmail,id,logout}) => {
            
         };
         fetchInits();
-        
-    },[track]);
+    }
+
+    
+    useEffect(()=>{
+        console.log("called")
+        updateMe() 
+    },[]);
+
+
     
     
 
@@ -94,6 +102,8 @@ const Home = ({userEmail,id,logout}) => {
     }
 
     const onSub=async(empid,pid)=>{
+
+
         console.log("inside sub");
         console.log(empid,pid);
         if(empid){
@@ -114,7 +124,8 @@ const Home = ({userEmail,id,logout}) => {
                 }
             });
         }
-        setTrack(track+1);
+        // setTrack(track+1);
+        updateMe()
         console.log(track);
     }
 

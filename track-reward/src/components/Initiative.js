@@ -12,6 +12,7 @@ const Initiative = ({initiative,onClickDesc,onSub}) => {
                 <p style={{flex:'1'}}>{initiative.status?'Current':'Upcoming'}</p>
                 <p style={{flex:'1'}}>{initiative.sdate}</p>
                 <p style={{flex:'1'}}>{initiative.edate}</p>
+                 {console.log("emp",initiative.empid)}
                 <Button btnText={initiative.empid?"UnSubscribe":"Subscribe"} onSub={()=>onSub(initiative.empid,initiative.pid)}/>
             </div>
         </div>

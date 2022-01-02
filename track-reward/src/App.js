@@ -25,8 +25,13 @@ function App() {
 
     await fetch(url)
     .then(res=>res.json()).then(data=>{
-      if(data!==null)
+      if(data!==null) {
+      console.log("data--",data)
       setLoginUser(data[0])
+      
+    setUser({id:data[0].empid,userName:data[0].empname});
+      
+      }
       else{
         logout();
       }
@@ -34,7 +39,7 @@ function App() {
 
     console.log("inside login",loginUser);
     //setId(loginUser.empid);
-    setUser({id:loginUser.empid,userName:loginUser.empname});
+    //setUser({id:loginUser.empid,userName:loginUser.empname});
       
     
 }

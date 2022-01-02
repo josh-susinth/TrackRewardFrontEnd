@@ -80,8 +80,7 @@ const Sub = ({userEmail,id,logout}) => {
     }
 
     const onSub=async(empid,pid)=>{
-      console.log("inside sub");
-      console.log(empid,pid);
+      console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh   ",empid,pid);
       if(empid){
           console.log("unsubscribe");
           await fetch(`https://track-and-reward-back-end.vercel.app/unsubscribe/${id}/${pid}`,{
@@ -89,7 +88,7 @@ const Sub = ({userEmail,id,logout}) => {
               headers:{
                   "Content-Type":"application/json"
               }
-          });
+          }); 
       }
       else{
           console.log("subscribe");
